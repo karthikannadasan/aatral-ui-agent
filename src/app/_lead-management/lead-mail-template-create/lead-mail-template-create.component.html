@@ -1,0 +1,87 @@
+<h5 class="indigo-text">{{_mode}} Mail Template</h5>
+<mat-dialog-content class="mat-typography">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <mat-form-field class="w-100 mb-0 pb-0">
+                    <mat-label class="text-muted">Mail Template Name</mat-label>
+                    <input type="text" matInput name="title" [(ngModel)]="template.title" />
+                </mat-form-field>
+                <small class="text-danger" *ngIf="_errors.title != ''">{{_errors.title}}</small>
+            </div>
+            <div class="col-12">
+                <mat-form-field class="w-100 mb-0 pb-0">
+                    <mat-label class="text-muted">Subject</mat-label>
+                    <input type="text" matInput name="subject" [(ngModel)]="template.subject" />
+                </mat-form-field>
+                <small class="text-danger" *ngIf="_errors.subject != ''">{{_errors.subject}}</small>
+            </div>
+            <div class="col-12">
+                <mat-label class="text-muted">Message</mat-label>
+                <angular-editor [config]="editorConfig" [(ngModel)]="template.message"></angular-editor>
+                <small class="text-danger" *ngIf="_errors.message != ''">{{_errors.message}}</small>
+            </div>
+
+            <div class="col-12 p-3">
+                <div class="text-center">
+                    <span class="pr-2" [ngClass]="template.enabled ? 'text-muted' : 'text-dark'">
+                        Disabled Mail Template
+                    </span>
+                    <mat-slide-toggle color="primary" [(ngModel)]="template.enabled">
+                    </mat-slide-toggle>
+                    <span class="pl-2" [ngClass]="template.enabled ? 'text-dark' : 'text-muted'">
+                        Enabled Mail Template</span>
+                </div>
+            </div>
+
+            <div class="col-12" *ngIf="template.enabled">
+                <mat-form-field>
+                    <mat-label class="required-label text-muted">Lead Status</mat-label>
+                    <mat-select [(ngModel)]="template.status">
+                        <mat-option value="All Status">All Status</mat-option>
+                        <mat-option value="Lead Created">Lead Created</mat-option>
+                        <mat-option value="Attempted to Contact">Attempted to Contact</mat-option>
+                        <mat-option value="Contact in Future">Contact in Future</mat-option>
+                        <mat-option value="Junk Lead">Junk Lead</mat-option>
+                        <mat-option value="Lost Lead">Lost Lead</mat-option>
+                        <mat-option value="Not Qualified">Not Qualified</mat-option>
+                        <mat-option value="Not Qualified">Already Implemented</mat-option>
+                        <mat-option value="Converted to Sales">Converted to Sales</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <small class="text-danger" *ngIf="_errors.status != ''">{{_errors.status}}</small>
+            </div>
+
+            <div class="col-12" *ngIf="template.enabled">
+                <label class="d-block" color="'primary" id="example-radio-group-label">Sending Mail Frequency</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                    [(ngModel)]="template.frequency">
+                    <mat-radio-button class="d-block" value="Daily">Daily</mat-radio-button>
+                    <mat-radio-button class="d-block" value="Weekly">Weekly (Every Monday)</mat-radio-button>
+                    <mat-radio-button class="d-block" value="Bi-Weekly">Bi-Weekly (1st and 15th day of evenry month)
+                    </mat-radio-button>
+                    <mat-radio-button class="d-block" value="Monthly">Monthly (Every 1st day of Month)
+                    </mat-radio-button>
+                    <mat-radio-button class="d-block" value="Bi-Monthly">Bi-Monthly (Once for Every Two Month)
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <span *ngIf="template.id > 0" (click)="deleteMailTemplate()" class="text-danger pointer">
+        <u>Delete this Template</u> <i class="fas fa-trash-alt pl-1"></i></span>
+
+    <button mat-button mat-dialog-close>Close</button>
+    <button color="primary" mat-stroked-button cdkFocusInitial (click)="saveMailTemplate()"
+        [disabled]="saving">Save&nbsp;
+        <i class="fa fa-save"></i>
+        <div *ngIf="saving" class="spinner-border spinner-border-sm pl-1" role="status">
+            &nbsp;<span class="sr-only"> Saving...</span>
+        </div>
+    </button>
+
+</mat-dialog-actions>

@@ -1,0 +1,281 @@
+<!-- <div class="container-fluid">
+
+    <div class="row p-2">
+        <div class="col">
+
+            <p class="indigo-text h4 text-center">LetterPad
+            </p>
+
+            <hr style="width:100%;text-align:left;margin-left:0">
+
+        </div>
+    </div>
+
+    <h5 class="font-weight-bold">Letterpad Info</h5>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <label>Institute</label>
+            <ng-multiselect-dropdown [placeholder]="'Select Institutes'" [data]="_institutes"
+                [(ngModel)]="_selectedInstitute" [settings]="_instituteDropdownSettings"
+                (onSelect)="deal.institute = $event;copyBillingAddressFromInstitute();">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-2">
+            
+        </div>
+    </div>
+
+    <p class="p-2">&nbsp;</p>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="p-2 border border-light-1">
+
+                <span class="font-weight-bold h6">Address</span>
+                <span *ngIf="deal.institute.instituteId" class="text-primary pointer float-right"
+                    (click)="copyBillingAddressFromInstitute()">
+                    <u>Copy Address from Selected Institute</u>
+                </span>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="billingTo">To</label>
+                        <input class="form-control border" type="text" id="billingTo"
+                            placeHolder="i.e. The Principal / Purchase Department" name="billingTo"
+                            [(ngModel)]="deal.billingTo" />
+                    </div>
+                    <div class="col-12">
+                        <label for="billingStreet">Street</label>
+                        <input class="form-control border" type="text" id="billingStreet"
+                            placeHolder="Enter Street" name="billingStreet" [(ngModel)]="deal.billingStreet1" />
+                    </div>
+                    <div class="col-12">
+                        <label for="billingStreet">Street2</label>
+                        <input class="form-control border" type="text" id="billingStreet2"
+                            placeHolder="Enter Street2" name="billingStreet"
+                            [(ngModel)]="deal.billingStreet2" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingCity">City</label>
+                        <input class="form-control border" type="text" id="billingCity" placeHolder="Enter City"
+                            name="billingCity" [(ngModel)]="deal.billingCity" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingState">State</label>
+                        <input class="form-control border" type="text" id="billingState"
+                            placeHolder="Enter State" name="billingState" [(ngModel)]="deal.billingState" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingCountry">Country</label>
+                        <input class="form-control border" type="text" id="billingCountry"
+                            placeHolder="Enter Country" name="billingCountry"
+                            [(ngModel)]="deal.billingCountry" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingZIPCode">ZIP Code</label>
+                        <input class="form-control border" type="text" id="billingZIPCode"
+                            placeHolder="Enter ZIP Code" name="billingZIPCode" [(ngModel)]="deal.billingZIPCode"
+                             />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="p-2 border border-light-1">
+
+                <span class="font-weight-bold h6">Address</span>
+                <span *ngIf="deal.institute.instituteId" class="text-primary pointer float-right"
+                    (click)="copyBillingAddressFromInstitute()">
+                    <u>Copy Address from Selected Institute</u>
+                </span>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="billingTo">To</label>
+                        <input class="form-control border" type="text" id="billingTo"
+                            placeHolder="i.e. The Principal / Purchase Department" name="billingTo"
+                            [(ngModel)]="deal.billingTo" />
+                    </div>
+                    <div class="col-12">
+                        <label for="billingStreet">Street</label>
+                        <input class="form-control border" type="text" id="billingStreet"
+                            placeHolder="Enter Street" name="billingStreet" [(ngModel)]="deal.billingStreet1" />
+                    </div>
+                    <div class="col-12">
+                        <label for="billingStreet">Street2</label>
+                        <input class="form-control border" type="text" id="billingStreet2"
+                            placeHolder="Enter Street2" name="billingStreet"
+                            [(ngModel)]="deal.billingStreet2" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingCity">City</label>
+                        <input class="form-control border" type="text" id="billingCity" placeHolder="Enter City"
+                            name="billingCity" [(ngModel)]="deal.billingCity" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingState">State</label>
+                        <input class="form-control border" type="text" id="billingState"
+                            placeHolder="Enter State" name="billingState" [(ngModel)]="deal.billingState" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingCountry">Country</label>
+                        <input class="form-control border" type="text" id="billingCountry"
+                            placeHolder="Enter Country" name="billingCountry"
+                            [(ngModel)]="deal.billingCountry" />
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="billingZIPCode">ZIP Code</label>
+                        <input class="form-control border" type="text" id="billingZIPCode"
+                            placeHolder="Enter ZIP Code" name="billingZIPCode" [(ngModel)]="deal.billingZIPCode"
+                             />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <label for="subject">Subject</label>
+            <input class="form-control border" type="text" id="subject" placeHolder="Enter Subject" name="subject"
+                [(ngModel)]="dealQuote.subject" />
+        </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-6">
+            <label for="quoteNo">Quotation No</label>
+            <input class="form-control border" type="text" id="quoteNo" placeHolder="Enter Quotation No " name="quoteNo"
+                [(ngModel)]="dealQuote.quoteNo" />
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <label for="dob" style="margin-bottom: 5px;"> Quote Date </label>
+            <div class="input-group">
+                <input class="form-control" (focus)="quoteDatedp.toggleCalendar()" placeholder="choose Quote Date"
+                    angular-mydatepicker name="quoteDateObject" [(ngModel)]="dealQuote.quoteDateObject"
+                    (dateChanged)="dealQuote.quoteDate = $event.singleDate.jsDate" [options]="myDatePickerOptions"
+                    #quoteDatedp="angular-mydatepicker" autocomplete="off" />
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i (click)="quoteDatedp.toggleCalendar()" class="fas fa-calendar-alt pointer"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <label for="dob" style="margin-bottom: 5px;"> Valid Until
+                <i [matMenuTriggerFor]="menu" class="fas fa-cog text-right pointer"></i>
+
+                <mat-menu #menu="matMenu">
+                    <button (click)="changeDueDate('Net 15')" mat-menu-item>Net 15</button>
+                    <button (click)="changeDueDate('Net 30')" mat-menu-item>Net 30</button>
+                    <button (click)="changeDueDate('Net 45')" mat-menu-item>Net 45</button>
+                    <button (click)="changeDueDate('Net 60')" mat-menu-item>Net 60</button>
+                    <button (click)="changeDueDate('Net 90')" mat-menu-item>Net 90</button>
+                </mat-menu>
+            </label>
+            <div class="input-group">
+                <input class="form-control" (focus)="validuntildp.toggleCalendar()" placeholder="choose valid date"
+                    angular-mydatepicker name="validUntilObject" [(ngModel)]="dealQuote.validUntilObject"
+                    (dateChanged)="dealQuote.validUntil = $event.singleDate.jsDate" [options]="myDatePickerOptions"
+                    #validuntildp="angular-mydatepicker" autocomplete="off" />
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i (click)="validuntildp.toggleCalendar()" class="fas fa-calendar-alt pointer"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-4 col-lg-6">
+            <label>Quote Stage</label>
+            <select name="quoteStage" [(ngModel)]="dealQuote.quoteStage" class="form-control border">
+                <option value="Draft">Draft</option>
+                <option value="Negotiation">Negotiation</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Closed Won">Closed Won</option>
+                <option value="Closed Lost">Closed Lost</option>
+            </select>
+        </div>
+
+        <div class="col-12 ">
+            <label for="terms">Terms & Conditions</label>
+            <textarea class="form-control" name="terms" id="terms" rows="5" [(ngModel)]="dealQuote.terms"></textarea>
+            <p><small *ngIf="dealQuote.createddatetime != null" class="d-block text-muted small">Created By
+                    {{dealQuote.createdBy}}
+                    {{dealQuote.createddatetime | date:'medium'}}</small>
+            </p>
+            <p class="d-block">
+                <small *ngIf="dealQuote.lastupdatedatetime != null" class="d-block text-muted small">Last Modified By
+                    {{dealQuote.modifiedBy}}
+                    {{dealQuote.lastupdatedatetime | date:'medium'}}
+                </small>
+            </p>
+
+            
+
+            <br>
+
+
+        </div>
+
+        <div class="col-12 text-center">
+
+            <button [disabled]="saving" class="btn btn-md btn-primary" (click)="saveDealQuotation()">
+                Save
+                <span [hidden]="!saving" class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true"></span>
+            </button>
+            <button class="btn btn-sm btn-outline-primary" (click)="clearFilters()">Clear</button>
+
+        </div>
+
+
+    </div>
+
+    <p class="p-2">&nbsp;</p>
+
+    
+
+
+
+    <p class="p-5">&nbsp;</p>
+
+    <div class="footer bg-white">
+        <span class="float-right">
+
+            <a *ngIf="deal.id > 0" routerLink="/sales/deals/overview/{{deal.id}}/deal" class="text-primary u"> cancel
+            </a>
+
+            <button class="btn btn-md btn-outline-primary" (click)="clear()">Clear</button>
+
+            <button (click)="save()" class="btn btn-md btn-primary">Save&nbsp;
+                <i class="fa fa-save"></i>
+            </button>
+        </span>
+    </div>
+
+    
+    <div class="modal fade right" id="productaddmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true" data-backdrop="true">
+        <div class="modal-dialog modal-frame modal-right modal-full-height modal-notify modal-primary" role="document">
+            
+            <div class="modal-content">
+                <div class="modal-body">
+
+                   
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
